@@ -1,9 +1,12 @@
 package com.globo.desafio;
 
+/**
+ * <h1>@author oseas.santana - 2015-02-04</h1>
+ * <br/>
+ * Classe responsável por identificar a primeira e última posição de uma sequencia de soma máxima 
+ */
 public class SubcadeiaSomaMaxima {
 	
-	// Referência: http://cs.fit.edu/~ryan/java/programs/oh/MaxSubsequenceSum-java.html
-
 	public class Subsequencia {
 		
 		int primeiro = 0, ultimo = 0, soma = 0;
@@ -30,7 +33,6 @@ public class SubcadeiaSomaMaxima {
 		
 	}
 
-	// Cubic algorithm
 	public Subsequencia maxSubsequenciaAlgoritmoCubico(int[] sequencia) {
 		final Subsequencia max = new Subsequencia();
 		for (int i = 0; i < sequencia.length; i++) {
@@ -45,7 +47,6 @@ public class SubcadeiaSomaMaxima {
 		return max;
 	}
 
-	// Quadratic algorithm
 	public Subsequencia maxSubsequenciaAlgoritmoQuadratico(int[] sequencia) {
 		final Subsequencia max = new Subsequencia();
 		for (int i = 0; i < sequencia.length; i++) {
@@ -58,7 +59,6 @@ public class SubcadeiaSomaMaxima {
 		return max;
 	}
 
-	// Linear algorithm
 	public Subsequencia maxSubsequenciaAlgoritmoLinear(int[] sequencia) {
 		final Subsequencia max = new Subsequencia();
 		int i = 0, soma = 0; 

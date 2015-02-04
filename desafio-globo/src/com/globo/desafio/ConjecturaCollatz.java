@@ -6,8 +6,6 @@ import java.util.Calendar;
  * <h1>@author oseas.santana - 2015-02-04</h1>
  * <br/>
  * Classe responsável por calcular a quantidade de sequências da conjectura collatz de um número de inteiro
- *  
- * 
  */
 public class ConjecturaCollatz {
 	
