@@ -3,7 +3,8 @@ package com.globo.desafio;
 /**
  * <h1>@author oseas.santana - 2015-02-04</h1>
  * <br/>
- * Classe responsável por identificar a primeira e última posição de uma sequencia de soma máxima 
+ * Classe responsável por identificar a primeira e última posição de uma sequencia de soma máxima
+ *  
  */
 public class SubcadeiaSomaMaxima {
 	
