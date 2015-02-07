@@ -224,6 +224,141 @@ public class RoboTest extends TestCase {
 	}
 	
 	/*
+	 * Verifica se ocorrerá a falha na simulação na definição de movimentação do Robô fora 
+	 * do limite X no sentio Norte
+	 */
+	
+	@Test
+	public void testValidarMovimentacaoForaDoLimiteXEmDirecaoNorte() {
+		
+		List<String> linhaComandoList = new ArrayList<String>();
+		linhaComandoList.add("10 10");
+		linhaComandoList.add("2 5 N");
+		linhaComandoList.add("MMMMMMMMMMMM");
+		
+		try {
+			
+			PlanoCartesiano planoCartesiano = new PlanoCartesiano();
+			planoCartesiano.definirEspaco(linhaComandoList.get(0));
+			planoCartesiano.definirPosicaoInicialDoRobo(linhaComandoList.get(1));
+			planoCartesiano.movimentar(linhaComandoList.get(2));
+			fail("Falha na simulação na definição de movimentação do Robô fora do limite X no sentio Norte");
+			
+		} 
+		catch (Exception e) {
+			assertTrue(true);
+		}
+		
+	}
+	
+	/*
+	 * Verifica se ocorrerá a falha na simulação na definição de movimentação do Robô fora 
+	 * do limite X no sentio SUL
+	 */
+	
+	@Test
+	public void testValidarMovimentacaoForaDoLimiteXEmDirecaoSul() {
+		
+		List<String> linhaComandoList = new ArrayList<String>();
+		linhaComandoList.add("10 10");
+		linhaComandoList.add("2 5 S");
+		linhaComandoList.add("MMMMMMMMMMMM");
+		
+		try {
+			
+			PlanoCartesiano planoCartesiano = new PlanoCartesiano();
+			planoCartesiano.definirEspaco(linhaComandoList.get(0));
+			planoCartesiano.definirPosicaoInicialDoRobo(linhaComandoList.get(1));
+			planoCartesiano.movimentar(linhaComandoList.get(2));
+			fail("Falha na simulação na definição de movimentação do Robô fora do limite X no sentio Sul");
+			
+		} 
+		catch (Exception e) {
+			assertTrue(true);
+		}
+		
+	}
+	
+	/*
+	 * Verifica se ocorrerá a falha na simulação na definição de movimentação do Robô fora 
+	 * do limite Y no sentio OESTE
+	 */
+	
+	@Test
+	public void testValidarMovimentacaoForaDoLimiteXEmDirecaoOeste() {
+		
+		List<String> linhaComandoList = new ArrayList<String>();
+		linhaComandoList.add("10 10");
+		linhaComandoList.add("2 5 O");
+		linhaComandoList.add("MMMMMMMMMMMM");
+		
+		try {
+			
+			PlanoCartesiano planoCartesiano = new PlanoCartesiano();
+			planoCartesiano.definirEspaco(linhaComandoList.get(0));
+			planoCartesiano.definirPosicaoInicialDoRobo(linhaComandoList.get(1));
+			planoCartesiano.movimentar(linhaComandoList.get(2));
+			fail("Falha na simulação na definição de movimentação do Robô fora do limite Y no sentio Oeste");
+			
+		} 
+		catch (Exception e) {
+			assertTrue(true);
+		}
+		
+	}
+	
+	/*
+	 * Verifica se eventualmente, alguma movimentação foi realizada fora do limite X e Y do espaço
+	 * do plano cartesiano 
+	 */
+	
+	@Test
+	public void testValidarMovimentacaoForaDoLimiteXY() {
+		
+		List<String> linhaComandoList = new ArrayList<String>();
+		linhaComandoList.add("10 10");
+		linhaComandoList.add("2 5 O");
+		
+		PlanoCartesiano planoCartesiano = new PlanoCartesiano();
+		planoCartesiano.definirEspaco(linhaComandoList.get(0));
+		planoCartesiano.definirPosicaoInicialDoRobo(linhaComandoList.get(1));
+
+		assertTrue(planoCartesiano.getPosicaoAtual().getPosicaoX() < planoCartesiano.getTamanhoLimiteX());
+		assertTrue(planoCartesiano.getPosicaoAtual().getPosicaoX() > 0);
+		assertTrue(planoCartesiano.getPosicaoAtual().getPosicaoY() < planoCartesiano.getTamanhoLimiteY());
+		assertTrue(planoCartesiano.getPosicaoAtual().getPosicaoY() > 0);
+		
+	}
+	
+	/*
+	 * Verifica se ocorrerá a falha na simulação na definição de movimentação do Robô fora 
+	 * do limite X no sentio LESTE
+	 */
+	
+	@Test
+	public void testValidarMovimentacaoForaDoLimiteXEmDirecaoLeste() {
+		
+		List<String> linhaComandoList = new ArrayList<String>();
+		linhaComandoList.add("10 10");
+		linhaComandoList.add("2 5 L");
+		linhaComandoList.add("MMMMMMMMMMMM");
+		
+		try {
+			
+			PlanoCartesiano planoCartesiano = new PlanoCartesiano();
+			planoCartesiano.definirEspaco(linhaComandoList.get(0));
+			planoCartesiano.definirPosicaoInicialDoRobo(linhaComandoList.get(1));
+			planoCartesiano.movimentar(linhaComandoList.get(2));
+			fail("Falha na simulação na definição de movimentação do Robô fora do limite Y no sentio Leste");
+			
+		} 
+		catch (Exception e) {
+			assertTrue(true);
+		}
+		
+	}
+	
+	/*
 	 * Verifica se a definição para leitura para movimentação completa do Robô está correta
 	 */
 	

@@ -5,37 +5,45 @@ import java.util.List;
 
 public class PlanoCartesiano {
 	
-	private int tamanhoX;
-	private int tamanhoY;
+	private int tamanhoLimiteX;
+	private int tamanhoLimiteY;
 	private List<Robo> movimentacaoRobo = new ArrayList<Robo>();
 	
-	public void setTamanhoInicial(int x, int y) {
-		tamanhoX = x;
-		tamanhoY = y;
+	public int getTamanhoLimiteX() {
+		return tamanhoLimiteX;
 	}
-	
-	public int getTamanhoX() {
-		return tamanhoX;
+	public void setTamanhoLimiteX(int tamanhoLimiteX) {
+		this.tamanhoLimiteX = tamanhoLimiteX;
 	}
-	public void setTamanhoX(int tamanhoX) {
-		this.tamanhoX = tamanhoX;
+	public int getTamanhoLimiteY() {
+		return tamanhoLimiteY;
 	}
-	public int getTamanhoY() {
-		return tamanhoY;
-	}
-	public void setTamanhoY(int tamanhoY) {
-		this.tamanhoY = tamanhoY;
+	public void setTamanhoLimiteY(int tamanhoLimiteY) {
+		this.tamanhoLimiteY = tamanhoLimiteY;
 	}
 	public Robo getPosicaoAtual() {
 		return movimentacaoRobo.get(movimentacaoRobo.size()-1);
+	}
+	public void adicionarRobo(Robo robo) {
+		
+		if (robo.getPosicaoX() < 0 || robo.getPosicaoX() > tamanhoLimiteX) {
+			throw new RuntimeException("Movimentação fora do limite X pré-definido");
+		}
+		
+		if (robo.getPosicaoY() < 0 || robo.getPosicaoY() > tamanhoLimiteY) {
+			throw new RuntimeException("Movimentação fora do limite Y pré-definido");
+		}
+		
+		movimentacaoRobo.add(robo);
+		
 	}
 	
 	public void definirEspaco(String linhaComando) {
 		
 		String[] espacoArray = linhaComando.split(" ");
 		
-		setTamanhoX(Integer.parseInt(espacoArray[0]));
-		setTamanhoY(Integer.parseInt(espacoArray[1].trim()));
+		setTamanhoLimiteX(Integer.parseInt(espacoArray[0]));
+		setTamanhoLimiteY(Integer.parseInt(espacoArray[1].trim()));
 		
 	}
 	
@@ -90,7 +98,7 @@ public class PlanoCartesiano {
 				}
 				
 				Robo robo = new Robo(getPosicaoAtual().getPosicaoX(), getPosicaoAtual().getPosicaoY(), direcao);
-				movimentacaoRobo.add(robo);
+				adicionarRobo(robo);
 				
 			}
 			else {
@@ -100,28 +108,28 @@ public class PlanoCartesiano {
 				if (DirecaoEnum.NORTE.equals(direcaoAtual)) {
 					
 					Robo robo = new Robo(getPosicaoAtual().getPosicaoX(), getPosicaoAtual().getPosicaoY() + 1, getPosicaoAtual().getDirecao());
-					movimentacaoRobo.add(robo);
+					adicionarRobo(robo);
 					
 				}
 				
 				if (DirecaoEnum.SUL.equals(direcaoAtual)) {
 					
 					Robo robo = new Robo(getPosicaoAtual().getPosicaoX(), getPosicaoAtual().getPosicaoY() - 1, getPosicaoAtual().getDirecao());
-					movimentacaoRobo.add(robo);
+					adicionarRobo(robo);
 					
 				}
 				
 				if (DirecaoEnum.LESTE.equals(direcaoAtual)) {
 					
 					Robo robo = new Robo(getPosicaoAtual().getPosicaoX() + 1, getPosicaoAtual().getPosicaoY(), getPosicaoAtual().getDirecao());
-					movimentacaoRobo.add(robo);
+					adicionarRobo(robo);
 					
 				}
 				
 				if (DirecaoEnum.OESTE.equals(direcaoAtual)) {
 					
 					Robo robo = new Robo(getPosicaoAtual().getPosicaoX() - 1, getPosicaoAtual().getPosicaoY(), getPosicaoAtual().getDirecao());
-					movimentacaoRobo.add(robo);
+					adicionarRobo(robo);
 					
 				}
 				
@@ -142,7 +150,7 @@ public class PlanoCartesiano {
 
 		PlanoCartesiano planoCartesiano = new PlanoCartesiano();
 		planoCartesiano.definirEspaco(linhaComandoList.get(0));
-		System.out.println("Espaço: (" + planoCartesiano.getTamanhoX() + ", " + planoCartesiano.getTamanhoY() + ")");
+		System.out.println("Espaço: (" + planoCartesiano.getTamanhoLimiteX() + ", " + planoCartesiano.getTamanhoLimiteY() + ")");
 		
 		planoCartesiano.definirPosicaoInicialDoRobo(linhaComandoList.get(1));
 		System.out.println("\nPOSIÇÃO INICIAL - " + planoCartesiano.getPosicaoAtual().getDescricao() + "\n");
