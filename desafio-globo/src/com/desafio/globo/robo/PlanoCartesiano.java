@@ -3,6 +3,12 @@ package com.desafio.globo.robo;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <h1>@author oseas.santana - 2015-02-07</h1>
+ * <br/>
+ * Classe responsável por representar o Plano Cartesiano onde o Robô
+ * se movimentará, armazenando ainda as movimetações realizadas pelo Robô.
+ */
 public class PlanoCartesiano {
 	
 	private int tamanhoLimiteX;
@@ -56,7 +62,7 @@ public class PlanoCartesiano {
 		DirecaoEnum direcaoInicial = DirecaoEnum.getDirecao(posicaoArray[2].trim());
 		
 		Robo robo = new Robo(posicaoInicialX, posicaoInicialY, direcaoInicial);
-		movimentacaoRobo.add(robo);
+		adicionarRobo(robo);
 		
 	}
 	

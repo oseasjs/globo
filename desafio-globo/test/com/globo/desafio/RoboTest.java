@@ -79,6 +79,7 @@ public class RoboTest extends TestCase {
 		try {
 			
 			PlanoCartesiano planoCartesiano = new PlanoCartesiano();
+			planoCartesiano.definirEspaco(linhaComandoList.get(0));
 			planoCartesiano.definirPosicaoInicialDoRobo(linhaComandoList.get(1));
 			assertTrue(true);
 			
@@ -99,7 +100,7 @@ public class RoboTest extends TestCase {
 		
 		List<String> linhaComandoList = new ArrayList<String>();
 		linhaComandoList.add("10 10");
-		linhaComandoList.add("2 5 X");
+		linhaComandoList.add("2 11 X");
 		
 		try {
 			
@@ -289,7 +290,7 @@ public class RoboTest extends TestCase {
 		
 		List<String> linhaComandoList = new ArrayList<String>();
 		linhaComandoList.add("10 10");
-		linhaComandoList.add("2 5 O");
+		linhaComandoList.add("2 5 W");
 		linhaComandoList.add("MMMMMMMMMMMM");
 		
 		try {
@@ -308,31 +309,8 @@ public class RoboTest extends TestCase {
 	}
 	
 	/*
-	 * Verifica se eventualmente, alguma movimentação foi realizada fora do limite X e Y do espaço
-	 * do plano cartesiano 
-	 */
-	
-	@Test
-	public void testValidarMovimentacaoForaDoLimiteXY() {
-		
-		List<String> linhaComandoList = new ArrayList<String>();
-		linhaComandoList.add("10 10");
-		linhaComandoList.add("2 5 O");
-		
-		PlanoCartesiano planoCartesiano = new PlanoCartesiano();
-		planoCartesiano.definirEspaco(linhaComandoList.get(0));
-		planoCartesiano.definirPosicaoInicialDoRobo(linhaComandoList.get(1));
-
-		assertTrue(planoCartesiano.getPosicaoAtual().getPosicaoX() < planoCartesiano.getTamanhoLimiteX());
-		assertTrue(planoCartesiano.getPosicaoAtual().getPosicaoX() > 0);
-		assertTrue(planoCartesiano.getPosicaoAtual().getPosicaoY() < planoCartesiano.getTamanhoLimiteY());
-		assertTrue(planoCartesiano.getPosicaoAtual().getPosicaoY() > 0);
-		
-	}
-	
-	/*
 	 * Verifica se ocorrerá a falha na simulação na definição de movimentação do Robô fora 
-	 * do limite X no sentio LESTE
+	 * do limite Y no sentio LESTE
 	 */
 	
 	@Test
@@ -340,7 +318,7 @@ public class RoboTest extends TestCase {
 		
 		List<String> linhaComandoList = new ArrayList<String>();
 		linhaComandoList.add("10 10");
-		linhaComandoList.add("2 5 L");
+		linhaComandoList.add("2 5 W");
 		linhaComandoList.add("MMMMMMMMMMMM");
 		
 		try {
@@ -355,6 +333,29 @@ public class RoboTest extends TestCase {
 		catch (Exception e) {
 			assertTrue(true);
 		}
+		
+	}
+	
+	/*
+	 * Verifica se eventualmente, alguma movimentação foi realizada fora do limite X e Y do espaço
+	 * do plano cartesiano 
+	 */
+	
+	@Test
+	public void testValidarMovimentacaoNoLimiteDoEspacoXYDoPlanoCartesiano() {
+		
+		List<String> linhaComandoList = new ArrayList<String>();
+		linhaComandoList.add("10 10");
+		linhaComandoList.add("2 5 W");
+		
+		PlanoCartesiano planoCartesiano = new PlanoCartesiano();
+		planoCartesiano.definirEspaco(linhaComandoList.get(0));
+		planoCartesiano.definirPosicaoInicialDoRobo(linhaComandoList.get(1));
+
+		assertTrue(planoCartesiano.getPosicaoAtual().getPosicaoX() < planoCartesiano.getTamanhoLimiteX());
+		assertTrue(planoCartesiano.getPosicaoAtual().getPosicaoX() > 0);
+		assertTrue(planoCartesiano.getPosicaoAtual().getPosicaoY() < planoCartesiano.getTamanhoLimiteY());
+		assertTrue(planoCartesiano.getPosicaoAtual().getPosicaoY() > 0);
 		
 	}
 	

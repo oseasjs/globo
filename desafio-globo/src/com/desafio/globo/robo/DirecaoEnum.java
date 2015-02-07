@@ -1,5 +1,11 @@
 package com.desafio.globo.robo;
 
+/**
+ * <h1>@author oseas.santana - 2015-02-07</h1>
+ * <br/>
+ * Enum responsável por representar os sentidos (orientações) 
+ * para onde o Robô poderá apontar.
+ */
 public enum DirecaoEnum {
 	
 	NORTE(1), LESTE(2), SUL(3), OESTE(4);

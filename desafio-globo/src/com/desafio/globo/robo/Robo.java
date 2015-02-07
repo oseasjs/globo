@@ -1,5 +1,11 @@
 package com.desafio.globo.robo;
 
+/**
+ * <h1>@author oseas.santana - 2015-02-07</h1>
+ * <br/>
+ * Classe responsável por representar as movimetações realizadas pelo Robô
+ * no plano cartesiano.
+ */
 public class Robo {
 	
 	private int posicaoX;
