@@ -2,6 +2,8 @@ package com.globo.desafio;
 
 import org.junit.Test;
 
+import com.desafio.globo.collatz.ConjecturaCollatz;
+
 import junit.framework.TestCase;
 
 public class ConjecturaCollatzTest extends TestCase {

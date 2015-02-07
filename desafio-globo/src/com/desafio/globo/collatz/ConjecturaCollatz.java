@@ -1,4 +1,4 @@
-package com.globo.desafio;
+package com.desafio.globo.collatz;
 
 import java.util.Calendar;
 

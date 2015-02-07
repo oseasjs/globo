@@ -4,10 +4,11 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
-import com.globo.desafio.SubcadeiaSomaMaxima.Subsequencia;
+import com.desafio.globo.somamaxima.SubcadeiaSomaMaxima;
+import com.desafio.globo.somamaxima.SubcadeiaSomaMaxima.Subsequencia;
 
 public class SubcadeiaSomaMaximaTest extends TestCase {
-	
+
 	@Test
 	public void testVerificarPrimeiraUltimaPosicaoAlgoritmoCubico() {
 		

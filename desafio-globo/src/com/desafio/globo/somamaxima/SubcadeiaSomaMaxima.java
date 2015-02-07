@@ -1,4 +1,4 @@
-package com.globo.desafio;
+package com.desafio.globo.somamaxima;
 
 /**
  * <h1>@author oseas.santana - 2015-02-04</h1>
